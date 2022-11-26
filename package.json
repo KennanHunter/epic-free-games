@@ -20,11 +20,8 @@
     "free-games",
     "epic-free-games"
   ],
-  "main": "dist/index.js",
-  "scripts": {
-    "build": "tsc -p ."
-  },
-  "types": "dist",
+  "main": "src/index.ts",
+  "scripts": {},
   "dependencies": {
     "moment": "^2.29.1"
   },
