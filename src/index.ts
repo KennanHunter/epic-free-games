@@ -1,4 +1,3 @@
-import axios from "axios";
 import moment from "moment";
 
 export interface OfferGame {
@@ -112,15 +111,18 @@ export type Country =
  * @param {boolean} includeAll include all offers like DLC's
  * @returns currentGames: games that are currently free. nextGames: announced games that will be free.
  */
-export const getGames = async (country: Country = "US", includeAll: boolean = false) => {
+export const getGames = async (
+  country: Country = "US",
+  includeAll: boolean = false
+) => {
   try {
     if (country.toUpperCase() !== country)
       throw new TypeError(
         `Country code must be uppercase your code: ${country}`
       );
-    const { data } = await axios.get(
+    const data = await fetch(
       `https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions?country=${country}`
-    );
+    ).then((response) => response.json());
 
     if (data?.errors)
       throw new Error(
